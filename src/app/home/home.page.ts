@@ -22,6 +22,7 @@ export class HomePage {
   longitude: number | null = null;
   nombre: string = 'Mateo Torres';
   createAt: number = Date.now();
+  ubicacion: string = '';
   ubicacionPrecisa: boolean = false;
 
   constructor(private firestore: Firestore) { }
@@ -34,6 +35,8 @@ export class HomePage {
       });
       this.latitude = coordinates.coords.latitude;
       this.longitude = coordinates.coords.longitude;
+      this.ubicacion = `https://www.google.com/maps/search/?api=1&query=${this.latitude},${this.longitude}`;
+
     } catch (error) {
       console.error('Error obteniendo ubicacion', error);
     }
@@ -55,7 +58,8 @@ export class HomePage {
         nombre: this.nombre,
         latitude: this.latitude,
         longitude: this.longitude,
-        createAt: this.createAt
+        createAt: this.createAt,
+        ubicacion: this.ubicacion
       });
     }
     alert('Ubicación guardada');
