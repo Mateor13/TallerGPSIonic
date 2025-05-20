@@ -25,3 +25,10 @@
 #container a {
   text-decoration: none;
 }
+
+.centrar-contenido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

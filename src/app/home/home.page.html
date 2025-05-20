@@ -1,20 +1,61 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      <ion-icon name="location-outline" slot="start" style="margin-right:8px;"></ion-icon>
+      Ubicación
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content [fullscreen]="true" class="ion-padding centrar-contenido">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="navigate-circle-outline" style="margin-right:8px;"></ion-icon>
+        Mi ubicación actual
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label position="stacked" color="medium">Latitud</ion-label>
+          <ion-text color="primary" style="font-size:1.2em;">
+            {{ latitude || 'No disponible' }}
+          </ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" color="medium">Longitud</ion-label>
+          <ion-text color="primary" style="font-size:1.2em;">
+            {{ longitude || 'No disponible' }}
+          </ion-text>
+        </ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="primary" (click)="obtenerUbicacion()">
+              <ion-icon name="locate-outline" slot="start"></ion-icon>
+              Obtener ubicación
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="success" (click)="abrirGoogleMaps()">
+              <ion-icon name="map-outline" slot="start"></ion-icon>
+              Ver en Google Maps
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="tertiary" (click)="guardarUbicacion()">
+              <ion-icon name="save-outline" slot="start"></ion-icon>
+              Guardar ubicación
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
